@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html {
+            height: 100vh;
+            margin: 0;
+        }
+
+        .libtard {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="libtard">
+        <div>
+            <p>Heads or Tails</p>
+
+            <button onclick="
+                playGame('Heads');
+            ">Heads</button>
+
+            <button onclick="
+                playGame('Tails');
+            ">Tails</button>
+
+            <button onclick="
+                score.wins = 0
+                score.losses = 0
+                localStorage.removeItem('score');
+            ">Reset score</button>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        let score = JSON.parse(localStorage.getItem('score'))
+            || {
+            wins: 0,
+            losses: 0,
+        };
+
+        function playGame(playerMove) {
+            const computerMove = pickComputerMove();
+            let result = '';
+            if (playerMove === 'Heads') {
+                if (computerMove === 'Heads') {
+                    result = 'You win!';
+                } else if (computerMove === 'Tails') {
+                    result = 'You lose!';
+                }
+            } else if (playerMove === 'Tails') {
+                if (computerMove === 'Tails') {
+                    result = 'You win!';
+                } else if (computerMove === 'Heads') {
+                    result = 'You lose';
+                }
+            }
+
+            if (result === 'You win!') {
+                score.wins ++;
+            }   else if (result === 'You lose!'){
+                score.losses ++;
+            }
+
+            localStorage.setItem('score',  JSON.stringify(score));
+            alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
+Wins: ${score.wins} Losses: ${score.losses}`);
+        }
+
+        function pickComputerMove() {
+            let computerMove = '';
+            const randomNumber = Math.random();
+            if (randomNumber >= 0 && randomNumber < 1 / 2) {
+                computerMove = 'Heads';
+            } else if (randomNumber >= 1 / 2 && randomNumber < 1) {
+                computerMove = 'Tails';
+            }
+
+            return computerMove;
+        }
+
+        const message = 5 && 'hello';
+        console.log(message);
+
+        let currency = '' || 'EUR';
+        console.log(currency);
+    </script>
+</body>
+
+</html>

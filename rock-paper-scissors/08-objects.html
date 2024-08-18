@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objects</title>
+</head>
+
+    <body>
+
+
+        <script>
+            // let product = {
+            //     name: 'apple',
+            //     price: 1090
+            // };
+            // console.log(product);
+            // console.log(product.price);
+            // console.log(product.name);
+
+            // product.name = 'LeBron';
+            // console.log(product);
+
+            // product.newProperty = true;
+            // console.log(product);
+
+            // delete product.newProperty;
+            // console.log(product);
+
+            const product2 = {
+                name: 'shirt',
+                ['delivery-time']: '1 day',
+                rating: {
+                    stars: 4.5,
+                    reviews: 1001
+                },
+                'is-in-stock': true,
+                fun () {
+                    console.log('function inside object');
+                }
+            };
+
+            console.log(product2)
+            console.log(name);
+            console.log(product2['delivery-time']);
+            console.log(product2.rating);
+            console.log(product2.rating.stars);
+            console.log(product2.rating.reviews);
+            product2.fun();
+            console.log(product2['is-in-stock']);
+
+            console.log(JSON.stringify(product2));
+            
+
+            const jsonString =  JSON.stringify(product2);
+            console.log(JSON.parse(jsonString));
+
+            console.log('DAHYUN' .toLowerCase());
+
+        </script>
+    </body>
+
+</html>
